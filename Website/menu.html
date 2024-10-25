@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="./styles.css" />
+    <title>Menu - Food Website</title>
+    <style>
+      .main-container {
+        height: 100vh;
+        width: 100%;
+        background-position: center;
+        background-size: cover;
+        padding-right: 5%;
+        padding-left: 3%;
+        box-sizing: border-box;
+        position: relative;
+      }
+      h1{
+        margin-top: 40px;
+      }
+      .menu-title{
+        font-size: 50px;
+        width: 100%;
+        text-align: center;
+      }
+      .menu-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        margin-top: 20px;
+      }
+      .menu-item {
+        border: 1px solid #eda134;
+        border-radius: 15px;
+        padding: 20px;
+        margin: 10px;
+        text-align: center;
+        width: 250px;
+        background-color: rgba(255, 255, 255, 0.8);
+        box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+      }
+      .menu-item img {
+        width: 100%;
+        height: auto;
+        border-radius: 15px;
+      }
+      .stars {
+        color: #eda134;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="navbar">
+        <h3 class="logo">Rooftop</h3>
+        <nav>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="location.html">Location</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="./about.html">About Us</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="content">
+        <h1 class="menu-title">Our Menu</h1>
+        <div class="menu-container" id="menu-container"></div>
+      </div>
+    </div>
+
+    <script>
+      const dishes = [
+        {
+          name: "Crispy Veg burger",
+          price: 79,
+          rating: 4,
+          image:
+            "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/FOOD_CATALOG/IMAGES/CMS/2024/4/19/d4387d28-73ab-45b7-b424-61588863d158_9477217d-7c7a-4834-919a-b9ae7d7cf950.jpg",
+        },
+        {
+          name: "Crispy Chicken Burger",
+          price: 90,
+          rating: 5,
+          image:
+            "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/FOOD_CATALOG/IMAGES/CMS/2024/4/19/03972ff7-ca47-4b34-a777-bec55c47869e_8944b667-7b9c-418b-88f3-df885ddadd6b.jpg",
+        },
+        {
+          name: "Crispy Veg Double Patty Burger",
+          price: 90,
+          rating: 4.6,
+          image:
+            "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/FOOD_CATALOG/IMAGES/CMS/2024/4/19/9cd490f9-f191-49c2-9043-6dc3e7e58166_34badbda-4128-45d4-87e2-e9c580e8db43.jpg",
+        },
+        {
+          name: "Medium Fries",
+          price: 139,
+          rating: 4.0,
+          image:
+            "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/FOOD_CATALOG/IMAGES/CMS/2024/3/14/fefae94a-53cd-421c-9f1f-d0f642949728_2ddc8be1-0a65-430d-9de8-542fae4ce739.jpg",
+        },
+        {
+          name: "King Fries",
+          price: 159,
+          rating: 4.1,
+          image:
+            "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/FOOD_CATALOG/IMAGES/CMS/2024/3/14/fefae94a-53cd-421c-9f1f-d0f642949728_2ddc8be1-0a65-430d-9de8-542fae4ce739.jpg",
+        },
+        {
+          name: "King Peri Peri Fries",
+          price: 159,
+          rating: 4.3,
+          image:
+            "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/FOOD_CATALOG/IMAGES/CMS/2024/4/19/fa747205-3c4d-497c-a948-65f3c224a4cf_11129959-8182-4b8c-bbb5-db49665fba19.jpg",
+        },
+        {
+          name: "Chocolate Thick Shake",
+          price: 190,
+          rating: 4.6,
+          image:
+            "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/FOOD_CATALOG/IMAGES/CMS/2024/4/19/cddbd1f0-c2fc-4af3-a108-b482cc0027e2_0564277b-594b-4aa9-a7cd-6796803092fc.jpg",
+        },
+        {
+          name: "Veggie Strips",
+          price: 139,
+          rating: 4.7,
+          image:
+            "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/FOOD_CATALOG/IMAGES/CMS/2024/4/19/0d444afb-ce8a-494c-bb43-e3c3d7398445_952e62b5-ff48-4bf4-b2f7-7efff2f6b60f.jpg",
+        },
+        {
+          name: "Boneless Wings",
+          price: 149,
+          rating: 4.8,
+          image:
+            "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/FOOD_CATALOG/IMAGES/CMS/2024/4/19/9d569500-1505-4d4c-a25b-cad67011116e_0572632e-672d-4a13-b94c-d2b815e7b210.jpg",
+        },
+        {
+          name: "Mango Shake",
+          price: 90,
+          rating: 4.2,
+          image:
+            "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/FOOD_CATALOG/IMAGES/CMS/2024/4/19/8b4f61be-e218-4a8e-8548-193b08dc6a37_84575246-015c-471f-9d5b-28d4c90c0c49.jpg",
+        },
+        {
+          name: "Peppar Barbecue Chicken Pizza",
+          price: 569,
+          rating: 4.3,
+          image:
+            "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/FOOD_CATALOG/IMAGES/CMS/2024/10/17/b99b241a-b4c7-438f-8d14-3f704dbe1cd4_eb4c709d-ebab-4291-be25-9900ab6b45e1.jpg",
+        },
+        {
+          name: "Double Cheese Margherita Pizza",
+          price: 458,
+          rating: 4.8,
+          image:
+            "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/FOOD_CATALOG/IMAGES/CMS/2024/10/17/b07475c1-97a8-49d3-bba0-9696253d44ca_eb8e4fe6-f157-4e5e-ab8a-173ecb88d9c9.jpg",
+        },
+        {
+          name: "Fresh Vegie Cheese Pizza",
+          price: 489,
+          rating: 4.2,
+          image:
+            "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/FOOD_CATALOG/IMAGES/CMS/2024/10/17/9b5b0373-4569-416b-b289-6dd546a21a7f_3f47169f-7fc6-4a59-8ec9-afc5992542cc.jpg",
+        },
+        {
+          name: "Fiery Sausage & Paprika Pizza",
+          price: 349,
+          rating: 4.3,
+          image:
+            "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/FOOD_CATALOG/IMAGES/CMS/2024/10/17/70dea34a-f906-4a28-8f3c-52271b2383d9_e3804e5e-5b4e-40b5-9199-61b4e8b622af.jpg",
+        },
+        {
+          name: "Double Egg n' Cheese Omelette Sandwich",
+          price: 229,
+          rating: 4.6,
+          image:
+            "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/FOOD_CATALOG/IMAGES/CMS/2024/8/19/b8766551-7002-43a5-86cc-12032675e7db_e6c1d650-6290-4e64-925b-a07a2be8d834.png",
+        },
+        {
+          name: "Iced Coffee with Cinammon Spice",
+          price: 229,
+          rating: 4.5,
+          image:
+            "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/FOOD_CATALOG/IMAGES/CMS/2024/7/23/8db75dd0-07fa-4afb-8243-44d87b74f45b_e7a88ae1-c3d6-487a-b3c8-48880a309593.png",
+        },
+        {
+          name: "2 McFlurry Oreo",
+          price: 130,
+          rating: 4.9,
+          image:
+            "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/65f3574f53112e9d263dfa924b1f8fed",
+        },
+        {
+          name: "2 Soft Serve Hot Fudge",
+          price: 156,
+          rating: 4.2,
+          image:
+            "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/f1238db9da73d8ec7a999792f35865d9",
+        },
+        {
+          name: "Coke zero can",
+          price: 60,
+          rating: 4.7,
+          image:
+            "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/8d6a37c4fc69bceb66b6a66690097190",
+        },
+        {
+          name: "Mixed Fruit Beverage",
+          price: 90,
+          rating: 4.2,
+          image:
+            "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/8e455d39bbbd8e4107b2099da51f3933",
+        },
+        {
+          name: "Chocolate Frappe",
+          price: 238,
+          rating: 4.0,
+          image:
+            "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/58e19527263a4bf3bbbac4befb924120",
+        },
+      ];
+      function displayMenu() {
+        const menuContainer = document.getElementById("menu-container");
+
+        dishes.forEach((dish) => {
+          const dishElement = document.createElement("div");
+          dishElement.classList.add("menu-item");
+          const stars = "★".repeat(dish.rating) + "☆".repeat(5 - dish.rating);
+
+          dishElement.innerHTML = `
+                    <img src="${dish.image}" alt="${dish.name}">
+                    <h2>${dish.name}</h2>
+                    <p>Price: ₹${dish.price.toFixed(2)}</p>
+                    <p class="stars">${stars}</p>
+                `;
+
+          menuContainer.appendChild(dishElement);
+        });
+      }
+      displayMenu();
+    </script>
+  </body>
+</html>
